@@ -3,7 +3,10 @@ import { Link } from 'gatsby'
 import tw from 'twin.macro'
 
 export const Container = styled.header`
-  ${tw`bg-red-800`}
+  ${tw`bg-black`}
+  a {
+    color: white;
+  }
 `;
 
 export const Nav = styled.nav`
@@ -23,7 +26,7 @@ export const NavItem = styled.li`
 `;
 
 export const NavLogo = styled(Link)`
-
+  ${tw`uppercase font-condensed text-9xl`}
 `;
 
 export const IconContainer = styled.ul`
