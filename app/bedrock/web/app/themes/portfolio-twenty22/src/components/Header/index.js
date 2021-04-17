@@ -16,7 +16,17 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 const query = graphql`{
   allWp {
     nodes {
-
+      themeOptions {
+        socialIcons {
+          socialmedia {
+            icons
+            link {
+              title
+              url
+            }
+          }
+        }
+      }
       generalSettings {
         title
       }
