@@ -32,5 +32,19 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        url: 
+        process.env.WPGRAPHQL_URL ||
+        `http://portfolio-2022.local/wp/graphql`,
+        schema: {
+          typePrefix: `Wp`,
+        },
+        debug: {
+          timeBuildSteps: true,
+        },
+      }
+    }
   ],
 }
