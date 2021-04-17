@@ -2,4 +2,5 @@
  
 ## Technologies
 * [Gatsby](https://www.gatsbyjs.com/)
+* [TailwindCSS](https://tailwindcss.com/)
 * [WordPress](https://wordpress.com/)
