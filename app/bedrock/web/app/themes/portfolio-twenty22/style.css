@@ -1,0 +1,17 @@
+/*
+Theme Name: Portfolio Twenty22
+Theme URI: https://tyburskidesigns.com/
+Author: Joseph Tyburski
+Author URI: https://tyburskidesigns.com/
+Description: Built using Gatsby, Tailwind, and GSAP. Repository on GitHub and webhooked to Gatsby Cloud with deployment to Netlify.
+Version: 1.0
+Requires at least: 5.0
+Tested up to: 5.7
+Requires PHP: 7.4.1
+*/
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
