@@ -10,9 +10,9 @@ import * as React from "react"
 // } from "@fortawesome/free-brands-svg-icons"
 // import { faHeart, faMusic } from "@fortawesome/pro-solid-svg-icons"
 
-import Header from "../components/Header"
-import { Body } from "../components/Layout/LayoutElements"
-import Footer from "../components/Footer"
+import Header from "../Header"
+import { Body } from "./LayoutElements"
+import Footer from "../Footer"
 
 // library.add([
 //   faMediumM, faLinkedinIn, faCodepen, faDribbble, faBehance, faGithub, faHeart, faMusic
