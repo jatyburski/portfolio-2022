@@ -1,8 +1,8 @@
 import React from 'react'
 import { 
-  Container, 
+  HeaderContainer, 
   IconContainer, 
-  // IconItem, 
+  IconItem, 
   Nav, 
   NavContainer, 
   NavItem, 
@@ -10,8 +10,8 @@ import {
   NavLogo 
 } from './HeaderElements'
 import { Link, graphql, useStaticQuery } from "gatsby"
-// import ExternalLink from '../Global/ExternalLink'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ExternalLink from '../Global/ExternalLink'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const query = graphql`{
   allWp {
@@ -50,12 +50,12 @@ const Header = () => {
 
 const data = useStaticQuery(query)
 const title = data.allWp.nodes[0].generalSettings.title
-// const icons = data.allWp.nodes[0].themeOptions.socialIcons.socialmedia
+const icons = data.allWp.nodes[0].themeOptions.socialIcons.socialmedia
 const menu = data.allWpMenu.edges[0].node.menuItems.nodes
 
 	return (
 		<>
-			<Container>
+			<HeaderContainer>
 				<Nav>
 					<NavContainer>
 
@@ -72,7 +72,7 @@ const menu = data.allWpMenu.edges[0].node.menuItems.nodes
             </NavItemContainer>
 
             <IconContainer>
-              {/* {icons.map(item => {
+              {icons.map(item => {
                 return (
                   <IconItem key={item.icons}>
                 
@@ -82,12 +82,12 @@ const menu = data.allWpMenu.edges[0].node.menuItems.nodes
 
                   </IconItem>
                 )
-              })} */}
+              })}
             </IconContainer>
             
 					</NavContainer>
 				</Nav>
-			</Container>
+			</HeaderContainer>
 		</>
 	)
 }

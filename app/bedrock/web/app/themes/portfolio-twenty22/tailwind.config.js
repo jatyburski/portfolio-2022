@@ -11,7 +11,11 @@ module.exports = {
       sans: ['Neogrotesk Pro', 'sans-serif'],
       condensed: ['Origin Super Condensed', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+      fontSize: {
+        '10xl': '23.5rem',
+      },
+    },
   },
   variants: {
     extend: {},
