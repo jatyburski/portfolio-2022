@@ -25,6 +25,7 @@
     "gatsby-source-filesystem": "^3.2.0",
     "gatsby-source-wordpress": "^5.3.0",
     "gatsby-transformer-sharp": "^3.2.0",
+    "gsap": "file:gsap-bonus.tgz",
     "postcss": "^8.2.6",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -39,7 +40,8 @@
   },
   "babelMacros": {
     "twin": {
-      "config": "tailwind.config.js"
+      "config": "tailwind.config.js",
+      "preset": "styled-components"
     }
   },
   "keywords": [

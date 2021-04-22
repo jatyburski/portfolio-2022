@@ -11,7 +11,21 @@ Requires PHP: 7.4.1
 */
 
 @tailwind base;
-
 @tailwind components;
-
 @tailwind utilities;
+
+@layer base {
+	@font-face {
+		font-family: Neogrotesk Pro;
+		font-weight: 400;
+		src: url(./src/fonts/NeogroteskPro-Regular.woff) format("woff");
+	}
+	@font-face {
+		font-family: Neogrotesk Pro;
+		font-weight: 700;
+		src: url(./src/fonts/NeogroteskPro-Bold.woff) format("woff");
+	}
+	body {
+		@apply antialiased text-white bg-xiketic;
+	}
+}

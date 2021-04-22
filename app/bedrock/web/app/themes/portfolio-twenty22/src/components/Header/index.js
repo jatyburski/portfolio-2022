@@ -1,17 +1,19 @@
 import React from 'react'
+import { Link, graphql, useStaticQuery } from "gatsby"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { gsap } from "gsap";
+
 import { 
-  HeaderContainer, 
+  Container, 
   IconContainer, 
   IconItem, 
   Nav, 
-  NavContainer, 
   NavItem, 
   NavItemContainer, 
   NavLogo 
 } from './HeaderElements'
-import { Link, graphql, useStaticQuery } from "gatsby"
+
 import ExternalLink from '../Global/ExternalLink'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const query = graphql`{
   allWp {
@@ -39,6 +41,7 @@ const query = graphql`{
           nodes {
             label
             path
+            id
           }
         }
       }
@@ -53,41 +56,42 @@ const title = data.allWp.nodes[0].generalSettings.title
 const icons = data.allWp.nodes[0].themeOptions.socialIcons.socialmedia
 const menu = data.allWpMenu.edges[0].node.menuItems.nodes
 
+gsap.from('.test', {opacity: 0, duration: 1, y: -50})
+
 	return (
 		<>
-			<HeaderContainer>
+			<Container>
 				<Nav>
-					<NavContainer>
 
-						<NavLogo to="/">{title}</NavLogo>
+          <NavLogo to="/">{title}</NavLogo>
 
-            <NavItemContainer>
-              {menu.map(item => {
-                return (
-                  <NavItem key={item.label}>
-                    <Link to={item.path}>{item.label}</Link>
-                  </NavItem>
-                )
-              })}
-            </NavItemContainer>
+          <NavItemContainer>
+            {menu.map(item => {
+              return (
+                <NavItem key={item.id}>
+                  <Link to={item.path}>{item.label}</Link>
+                </NavItem>
+              )
+            })}
+          </NavItemContainer>
 
-            <IconContainer>
-              {icons.map(item => {
-                return (
-                  <IconItem key={item.icons}>
-                
-                    <ExternalLink to={item.link.url} title={item.icons}>
-                      <FontAwesomeIcon icon={['fab', item.icons]} size="4x" />
-                    </ExternalLink>
+          <IconContainer>
+            {icons.map((item, index) => {
+              return (
+                <IconItem key={index}>
+              
+                  <ExternalLink to={item.link.url} title={item.link.title}>
+                    <span className="sr-only">{item.link.title}</span>
+                    <FontAwesomeIcon icon={['fab', item.icons]} size="4x" />
+                  </ExternalLink>
 
-                  </IconItem>
-                )
-              })}
-            </IconContainer>
+                </IconItem>
+              )
+            })}
+          </IconContainer>
             
-					</NavContainer>
 				</Nav>
-			</HeaderContainer>
+			</Container>
 		</>
 	)
 }

@@ -2,8 +2,10 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 import tw from 'twin.macro'
 
-export const HeaderContainer = styled.header`
-  ${tw`bg-black`}
+export const Container = styled.header.attrs(props => ({
+  className: "test"
+}))`
+  ${tw`bg-xiketic`}
   a {
     color: white;
   }
@@ -11,10 +13,6 @@ export const HeaderContainer = styled.header`
 
 export const Nav = styled.nav`
   
-`;
-
-export const NavContainer = styled.div`
-
 `;
 
 export const NavLogo = styled(Link)`
