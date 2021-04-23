@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, graphql, useStaticQuery } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { gsap } from "gsap";
 
 import { 
   Container, 
@@ -55,8 +54,6 @@ const data = useStaticQuery(query)
 const title = data.allWp.nodes[0].generalSettings.title
 const icons = data.allWp.nodes[0].themeOptions.socialIcons.socialmedia
 const menu = data.allWpMenu.edges[0].node.menuItems.nodes
-
-gsap.from('.test', {opacity: 0, duration: 1, y: -50})
 
 	return (
 		<>

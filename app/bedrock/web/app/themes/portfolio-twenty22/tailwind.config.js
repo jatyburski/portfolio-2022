@@ -14,20 +14,35 @@ module.exports = {
     },
     extend: {
       fontSize: {
+        xs: '.7rem',
+        '6xl': '3.4rem',
         '10xl': '23.4375rem',
       },
-      marginLeft: {
-        'ml-1/12': '8.333%',
-        'ml-2/12': '16.666%',
-        'ml-3/12': '24.999%',
-        'ml-4/12': '32.332%',
-        'ml-5/12': '40.665%',
-        'ml-6/12': '48.998%',
+      lineHeight: {
+        less: '.8',
       },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      borderColor: [
+        'before',
+      ],
+      borderStyle: [
+        'before',
+      ],
+      borderWidth: [
+        'before',
+      ],
+      height: [
+        'before',
+      ],
+      position: [
+        'before',
+      ],
+    },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-pseudo-elements')
+  ],
 }

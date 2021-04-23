@@ -25,7 +25,10 @@ Requires PHP: 7.4.1
 		font-weight: 700;
 		src: url(./src/fonts/NeogroteskPro-Bold.woff) format("woff");
 	}
-	body {
+  ::selection {
+    @apply bg-mustard text-xiketic;
+  }
+  body {
 		@apply antialiased text-white bg-xiketic;
 	}
 }
