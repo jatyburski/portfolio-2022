@@ -11,7 +11,7 @@ import {
 import { faHeart, faMusic } from "@fortawesome/pro-solid-svg-icons"
 
 import Header from "../Header"
-import { Body } from "./LayoutElements"
+import { Body, StaticBackground } from "./LayoutElements"
 import Footer from "../Footer"
 
 library.add([
@@ -22,6 +22,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <StaticBackground />
       <Header />
       
       <Body>

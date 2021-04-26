@@ -4,57 +4,15 @@ import {
 	Row,
 	Title,
 	SocialProfiles,
-  	ListItem,
-	Button,
 	Colophon,
 	Widget
 } from './FooterElements'
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { Link } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import ExternalLink from '../Global/ExternalLink'
-import Clipboard from 'clipboard'
-import gsap from 'gsap'
-
-const query = graphql`{
-	allWp {
-		nodes {
-			themeOptions {
-			socialIcons {
-				socialmedia {
-					link {
-						title
-						url
-						}
-					}
-				}
-			}
-			generalSettings {
-				email
-			}
-		}
-	}
-}`
-
-const copy = new Clipboard("button");
-
-copy.on("success", function() {
-	alert("Copied to clipboard.")
-});
-copy.on("error", function() {
-	alert("Failed to copy.")
-});
-
-gsap.set("ul", { perspective: 800 });
-gsap.set("li", { transformStyle: "preserve-3d" });
-gsap.set(".flip-reveal", { rotationY: -180 });
-gsap.set([ ".flip-reveal", ".flip-default" ], { backfaceVisibility:"hidden" });
+import Email from './Email/EmailOptions'
+import Platforms from './SocialPlatforms/Platforms'
 
 const Footer = () => {
-
-	const data = useStaticQuery(query)
-	const platforms = data.allWp.nodes[0].themeOptions.socialIcons.socialmedia
-  	const email = data.allWp.nodes[0].generalSettings.email
-	console.log(email)
 	
 	return (
 		<Container>
@@ -64,31 +22,8 @@ const Footer = () => {
 					Connect
 				</Title>
 				<SocialProfiles>
-					<ListItem hasOptions>
-						<span tabIndex="-1" aria-hidden="true" className="focus:outline-none flip-default">
-							Email
-						</span>
-						<div className="flip-reveal">
-							<Button data-clipboard-text={ email }>
-								Copy Email
-							</Button>
-							<a href={ 'mailto:' + email + '?subject=Hello Joe' }>
-								Open in App
-							</a>
-						</div>
-					</ListItem>
-					{platforms.map(( item, index ) => {
-						return (
-							<ListItem key={ index }>
-								<span tabIndex="-1" aria-hidden="true" className="focus:outline-none flip-default">
-									{ item.link.title }
-								</span>
-								<ExternalLink to={ item.link.url } className="flip-reveal">
-									{ item.link.title }
-								</ExternalLink>
-							</ListItem>
-						)
-					})}
+					<Email />
+					<Platforms />
 				</SocialProfiles>
 			</Row>
 			<Row>
