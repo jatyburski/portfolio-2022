@@ -24,23 +24,7 @@ module.exports = {
     },
   },
   variants: {
-    extend: {
-      borderColor: [
-        'before',
-      ],
-      borderStyle: [
-        'before',
-      ],
-      borderWidth: [
-        'before',
-      ],
-      height: [
-        'before',
-      ],
-      position: [
-        'before',
-      ],
-    },
+    extend: {},
   },
   plugins: [
     require('tailwindcss-pseudo-elements')

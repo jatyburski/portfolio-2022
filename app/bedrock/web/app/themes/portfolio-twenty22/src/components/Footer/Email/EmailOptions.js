@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { ListItem, DefaultState, Button } from '../FooterElements'
+import { ListItem, Button } from '../FooterElements'
 import { graphql, useStaticQuery } from "gatsby"
 import Clipboard from 'clipboard'
-import gsap, { Back } from 'gsap'
 
 const query = graphql`{
 	allWp {
@@ -14,64 +13,40 @@ const query = graphql`{
 	}
 }`
 
-
-
-// const flip = new Flip(".flip-container");
-
-// flip.hover(
-//   function() {
-// 		gsap.to((this).find(".flip-item"), {duration: 1.2, rotationY:180, ease:Back.easeOut});
-//   },
-//   function() {
-//     gsap.to((this).find(".flip-item"), {duration: 1.2, rotationY:0, ease:Back.easeOut}); 
-//   }
-// );
-
 const Email = () => {
 
 	// Data
 	const data = useStaticQuery(query)
   	const email = data.allWp.nodes[0].generalSettings.email
 
-	// Triggers
-	const [isShown, setIsShown] = useState(false);
-	const copy = new Clipboard("button");
-
-	// Animations
-	function flipText() {
-		gsap.set(".flip-container", { perspective: 800 });
-		gsap.set(".flip-item", { transformStyle: "preserve-3d" });
-		gsap.set(".flip-reveal", { rotationY: -180 });
-		gsap.set([ ".flip-reveal", ".flip-default" ], { backfaceVisibility:"hidden" });
-		
-	}
-
 	// Copy to Clipboard
-	copy.on("success", function() {
-		alert("Copied to clipboard.")
+	const clip = new Clipboard("button");
+	const element = document.getElementsByTagName("button");
+
+	clip.on("success", function() {
+		let successMessage = document.createElement('div');
+		successMessage.innerText = "Copied!";
+		element[0].insertAdjacentElement('beforebegin', successMessage);
 	});
-	copy.on("error", function() {
-		alert("Failed to copy.")
+	clip.on("error", function() {
+		let errorMessage = document.createElement('div');
+		errorMessage.innerText = "Failed...";
+		element[0].insertAdjacentElement('beforebegin', errorMessage);
 	});
 	
 	return (
-		<ListItem 
-			hasOptions
-			onMouseEnter={() => setIsShown(true)}
-			onMouseLeave={() => setIsShown(false)}>
-			<DefaultState>
+		<ListItem hasOptions>
+			<span>
 				Email
-			</DefaultState>
-			{isShown && (
-				<div className="absolute overflow-hidden flip-reveal">
-					<Button data-clipboard-text={ email }>
-						Copy Email
-					</Button>
-					<a href={ 'mailto:' + email + '?subject=Hello Joe' }>
-						Open in Mail App
-					</a>
-				</div>
-			)}
+			</span>
+			<div>
+				<Button data-clipboard-text="test">
+					Copy
+				</Button> |
+				<a href={ 'mailto:' + email + '?subject=Hello Joe' }>
+					Open in App
+				</a>
+			</div>
 		</ListItem>
 	)
 }

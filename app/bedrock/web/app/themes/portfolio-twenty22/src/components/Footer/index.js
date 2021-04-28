@@ -3,7 +3,7 @@ import {
 	Container,
 	Row,
 	Title,
-	SocialProfiles,
+	List,
 	Colophon,
 	Widget
 } from './FooterElements'
@@ -21,10 +21,10 @@ const Footer = () => {
 					Let's<br />
 					Connect
 				</Title>
-				<SocialProfiles>
+				<List>
 					<Email />
 					<Platforms />
-				</SocialProfiles>
+				</List>
 			</Row>
 			<Row>
 				<Colophon>
