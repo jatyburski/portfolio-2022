@@ -40,7 +40,7 @@ const EmailOptions = () => {
 
   return (
     <ListItem hasOptions>
-			<span aria-hidden="true">
+			<span aria-hidden="true" defaultState>
 				Email
 			</span>
 			<div>
@@ -48,9 +48,9 @@ const EmailOptions = () => {
 				<Button onClick={ copyToClipboard }>
 					{ buttonText }
 				</Button>
-				<span>|</span>
+				<span aria-hidden="true">|</span>
 				<a href={ 'mailto:' + emailAddress + '?subject=Hello Joe' }>
-					Open in App
+					Use in App
 				</a>
 			</div>
     </ListItem>

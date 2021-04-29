@@ -21,10 +21,14 @@ module.exports = {
       lineHeight: {
         less: '.8',
       },
+      transformOrigin: {
+        'center-top': '50% 0',
+      },
     },
   },
   variants: {
     extend: {},
+    transformDuration: ['responsive', 'motion-safe', 'motion-reduce']
   },
   plugins: [
     require('tailwindcss-pseudo-elements')

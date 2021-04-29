@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import tw from 'twin.macro'
+import tw, {css} from 'twin.macro'
 import ExternalLink from '../Global/ExternalLink';
 
 // Global
@@ -23,44 +23,44 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
   ${tw`font-bold font-sans line-height[1.15] overflow-hidden text-6xl`}
-
-  ${
-    ({ hasOptions }) => hasOptions && tw`perspective[600] perspective-origin[50%] w-full`
-  }
-
-  &:hover {
-    & > span {
-      ${tw`color[transparent] transform[translate3d(0, 0, -60px) rotateX(90deg)]`}
-    }
-    
-    & div {
-      ${tw`transform[translate3d(0, 0, 0) rotateX(0deg)]`}
-    }
-  }
-
-  > span {
-    ${tw`block relative transform-origin[50% 0] transform-style[preserve-3d] transition-all duration-500 ease`}
-  }
   
-  div {
-    ${tw`absolute block left-0 top-0 transform[translate3d(0, 105%, 0) rotateX(-90deg)] transform-origin[50% 0] transition-all duration-500 ease`}
-
-    span {
-      ${tw`mx-2`}
+  ${({ hasOptions }) => hasOptions && css`
+    ${tw`perspective[600] perspective-origin[50%] w-full`}
+    
+    > span {
+      ${tw`block cursor-pointer origin-center-top relative transform-style[preserve-3d] transition-all motion-safe:duration-500 motion-reduce:duration-75 ease`}
     }
 
-    *:not(span) {
-      ${tw`transition-all duration-300 ease`}
+    &:hover {
+      > span {
+        ${tw`color[transparent] transform[translate3d(0, 0, -60px) rotateX(90deg)]`}
+      }
       
-      &:hover {
-        ${tw`text-mustard`}
+      div {
+        ${tw`transform[translate3d(0, 0, 0) rotateX(0deg)]`}
       }
     }
-  }
+
+    div {
+      ${tw`absolute block left-0 origin-center-top top-0 transform[translate3d(0, 105%, 0) rotateX(-90deg)] transition-all motion-safe:duration-500 motion-reduce:duration-75 ease`}
+  
+      span {
+        ${tw`mx-2`}
+      }
+  
+      *:not(span) {
+        ${tw`transition-all motion-safe:duration-300 motion-reduce:duration-75 ease`}
+        
+        &:hover {
+          ${tw`text-mustard`}
+        }
+      }
+    }
+  `}
 `;
 
 export const ListLink = styled(ExternalLink)`
-  ${tw`overflow-hidden perspective[600] perspective-origin[50%]`}
+  ${tw`perspective[600] perspective-origin[50%]`}
 
   &:hover span {
     ${tw`color[transparent] transform[translate3d(0, 0, -60px) rotateX(90deg)]`}
@@ -68,10 +68,10 @@ export const ListLink = styled(ExternalLink)`
 
   span {
     ${tw`
-      block relative transform-origin[50% 0] transform-style[preserve-3d] transition-all duration-500 ease
+      block origin-center-top relative transform-style[preserve-3d] transition-all motion-safe:duration-500 motion-reduce:duration-75 ease
       
       after:(
-        absolute block content[attr(data-title)] left-0 top-0 text-mustard transform[translate3d(0, 105%, 0) rotateX(-90deg)] transform-origin[50% 0]
+        absolute block content[attr(data-title)] left-0 origin-center-top top-0 text-mustard transform[translate3d(0, 105%, 0) rotateX(-90deg)]
       )
     `}
   }
@@ -86,6 +86,7 @@ export const Button = styled.button`
 export const Colophon = styled.div`
   ${tw`
     leading-relaxed pb-16 pt-24 relative text-grey text-xs w-4/12
+    
     before:(
       absolute border-grey border-solid border-t empty-content h-px left[-16.666vw] top[calc(50% + 10px)] width[8.333vw]
     )
