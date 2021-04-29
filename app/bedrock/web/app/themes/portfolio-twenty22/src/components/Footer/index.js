@@ -9,7 +9,7 @@ import {
 } from './FooterElements'
 import { Link } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Email from './Email/EmailOptions'
+import EmailOptions from './Email/EmailOptions'
 import Platforms from './SocialPlatforms/Platforms'
 
 const Footer = () => {
@@ -22,7 +22,7 @@ const Footer = () => {
 					Connect
 				</Title>
 				<List>
-					<Email />
+					<EmailOptions />
 					<Platforms />
 				</List>
 			</Row>

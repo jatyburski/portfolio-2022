@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ListItem, Button } from '../FooterElements'
 import { graphql, useStaticQuery } from "gatsby"
-import Clipboard from 'clipboard'
+import copy from "copy-to-clipboard"; 
 
 const query = graphql`{
 	allWp {
@@ -13,42 +13,48 @@ const query = graphql`{
 	}
 }`
 
-const Email = () => {
+const EmailOptions = () => {
 
 	// Data
 	const data = useStaticQuery(query)
-  	const email = data.allWp.nodes[0].generalSettings.email
+	const emailAddress = data.allWp.nodes[0].generalSettings.email
 
 	// Copy to Clipboard
-	const clip = new Clipboard("button");
-	const element = document.getElementsByTagName("button");
+	const [buttonText, setButtonText] = useState('Copy');
 
-	clip.on("success", function() {
-		let successMessage = document.createElement('div');
-		successMessage.innerText = "Copied!";
-		element[0].insertAdjacentElement('beforebegin', successMessage);
+	useEffect(() => {
+		let timer = setTimeout(() => setButtonText('Copy'), 1500);
+		return () => {
+			clearTimeout(timer);
+		}
 	});
-	clip.on("error", function() {
-		let errorMessage = document.createElement('div');
-		errorMessage.innerText = "Failed...";
-		element[0].insertAdjacentElement('beforebegin', errorMessage);
-	});
+  
+	const handleCopyEmail = (e) => {
+		setButtonText(e.target.value);
+	} 
 	
-	return (
-		<ListItem hasOptions>
-			<span>
+	const copyToClipboard = () => {
+		copy(emailAddress);
+		setButtonText('Copied!');
+	}
+
+  return (
+    <ListItem hasOptions>
+			<span aria-hidden="true">
 				Email
 			</span>
 			<div>
-				<Button data-clipboard-text="test">
-					Copy
-				</Button> |
-				<a href={ 'mailto:' + email + '?subject=Hello Joe' }>
+				<input onChange={ handleCopyEmail } className="hidden" />
+				<Button onClick={ copyToClipboard }>
+					{ buttonText }
+				</Button>
+				<span>|</span>
+				<a href={ 'mailto:' + emailAddress + '?subject=Hello Joe' }>
 					Open in App
 				</a>
 			</div>
-		</ListItem>
-	)
+    </ListItem>
+  )
 }
 
-export default Email
+export default EmailOptions

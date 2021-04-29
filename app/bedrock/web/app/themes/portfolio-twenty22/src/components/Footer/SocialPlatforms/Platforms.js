@@ -21,7 +21,6 @@ const query = graphql`{
 
 const Platforms = () => {
 	
-	// Data
 	const data = useStaticQuery( query )
 	const platforms = data.allWp.nodes[0].themeOptions.socialIcons.socialmedia
 	
