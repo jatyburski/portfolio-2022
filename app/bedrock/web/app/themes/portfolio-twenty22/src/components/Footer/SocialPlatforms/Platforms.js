@@ -1,35 +1,18 @@
 import React from 'react'
-import { graphql, useStaticQuery } from "gatsby"
 import { ListItem, ListLink } from '../FooterElements'
+import { useThemeOptions } from '../../../hooks/useThemeOptions'
 
-const query = graphql`{
-	allWp {
-		nodes {
-			themeOptions {
-			socialIcons {
-				socialmedia {
-					link {
-						title
-						url
-						}
-					}
-				}
-			}
-		}
-	}
-}`
+export default function Platforms() {
+	const { themeOptions } = useThemeOptions()
+	const { settings } = themeOptions
+	const { socialmedia } = settings
 
-const Platforms = () => {
-	
-	const data = useStaticQuery( query )
-	const platforms = data.allWp.nodes[0].themeOptions.socialIcons.socialmedia
-	
 	return (
 		<>
-			{platforms.map(( item, index ) => {
+			{socialmedia.map(( item, index ) => {
 
 				return (
-					<ListItem key={ index }>
+					<ListItem key={ index + 1 }>
 
 						<ListLink to={ item.link.url }>
 							<span data-title={ item.link.title }>
@@ -44,5 +27,3 @@ const Platforms = () => {
 		</>
 	)
 }
-
-export default Platforms

@@ -25,10 +25,10 @@ export const ListItem = styled.li`
   ${tw`font-bold font-sans line-height[1.15] overflow-hidden text-6xl`}
   
   ${({ hasOptions }) => hasOptions && css`
-    ${tw`perspective[600] perspective-origin[50%] w-full`}
+    ${tw`relative overflow-visible`}
     
-    > span {
-      ${tw`block cursor-pointer origin-center-top relative transform-style[preserve-3d] transition-all motion-safe:duration-500 motion-reduce:duration-75 ease`}
+    /* > span {
+      ${tw`block cursor-pointer origin-center-top relative transform-style[preserve-3d] transition-all motion-safe:duration-300 motion-reduce:duration-75 ease-linear`}
     }
 
     &:hover {
@@ -42,21 +42,25 @@ export const ListItem = styled.li`
     }
 
     div {
-      ${tw`absolute block left-0 origin-center-top top-0 transform[translate3d(0, 105%, 0) rotateX(-90deg)] transition-all motion-safe:duration-500 motion-reduce:duration-75 ease`}
+      ${tw`absolute block left-0 origin-center-top top-0 transform[translate3d(0, 105%, 0) rotateX(-90deg)] transition-all motion-safe:duration-300 motion-reduce:duration-75 ease-linear`}
   
       span {
         ${tw`mx-2`}
       }
   
       *:not(span) {
-        ${tw`transition-all motion-safe:duration-300 motion-reduce:duration-75 ease`}
+        ${tw`transition-all ease-linear motion-safe:duration-300 motion-reduce:duration-75`}
         
         &:hover {
           ${tw`text-mustard`}
         }
       }
-    }
+    } */
   `}
+`;
+
+export const PopOver = styled.div`
+  ${tw`absolute top-0 z-40 transform[translateY(-90%)] bg-white h-96 rounded-md text-left text-xiketic p-14 w-96`}
 `;
 
 export const ListLink = styled(ExternalLink)`
@@ -68,7 +72,7 @@ export const ListLink = styled(ExternalLink)`
 
   span {
     ${tw`
-      block origin-center-top relative transform-style[preserve-3d] transition-all motion-safe:duration-500 motion-reduce:duration-75 ease
+      block origin-center-top relative transform-style[preserve-3d] transition-all motion-safe:duration-300 motion-reduce:duration-75 ease-linear
       
       after:(
         absolute block content[attr(data-title)] left-0 origin-center-top top-0 text-mustard transform[translate3d(0, 105%, 0) rotateX(-90deg)]
@@ -78,7 +82,7 @@ export const ListLink = styled(ExternalLink)`
 `;
 
 export const Button = styled.button`
-  ${tw`font-bold`}
+  ${tw`font-bold focus:outline-none`}
 `;
 
 
@@ -94,5 +98,5 @@ export const Colophon = styled.div`
 `;
 
 export const Widget = styled.div`
-  ${tw`flex justify-end leading-normal margin-right[8.333vw] pb-16 pt-24 text-grey text-xs w-2/12`}
+  ${tw`flex items-start justify-end leading-normal margin-right[8.333vw] pt-24 text-grey text-xs w-2/12`}
 `;

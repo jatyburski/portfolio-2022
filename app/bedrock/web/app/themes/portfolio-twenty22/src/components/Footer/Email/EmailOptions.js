@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from 'react'
-import { ListItem, Button } from '../FooterElements'
-import { graphql, useStaticQuery } from "gatsby"
+import { ListItem, PopOver, Button } from '../FooterElements'
 import copy from "copy-to-clipboard"; 
+import useHover from './popover';
+import { useThemeOptions } from '../../../hooks/useThemeOptions'
+import gsap from 'gsap'
 
-const query = graphql`{
-	allWp {
-		nodes {
-			generalSettings {
-				email
-			}
-		}
-	}
-}`
+export default function EmailOptions () {
+	const { themeOptions } = useThemeOptions()
+	const { settings } = themeOptions
+	const { emailaddress } = settings
 
-const EmailOptions = () => {
+	// Popover
+	const [hoverRef, isHovered] = useHover();
 
-	// Data
-	const data = useStaticQuery(query)
-	const emailAddress = data.allWp.nodes[0].generalSettings.email
+	// useEffect(() => {
+	// 	isHovered.current = gsap.to(hoverRef.current, {
+	// 		duration: .3,
+	// 		opacity: 0.5,
+	// 		paused: true
+	// 	});
+	// }, []);
 
 	// Copy to Clipboard
-	const [buttonText, setButtonText] = useState('Copy');
+	const [buttonText, setButtonText] = useState('Copy as Text');
 
 	useEffect(() => {
-		let timer = setTimeout(() => setButtonText('Copy'), 1500);
+		let timer = setTimeout(() => setButtonText('Copy as Text'), 1500);
 		return () => {
 			clearTimeout(timer);
 		}
@@ -34,27 +36,27 @@ const EmailOptions = () => {
 	} 
 	
 	const copyToClipboard = () => {
-		copy(emailAddress);
+		copy(emailaddress);
 		setButtonText('Copied!');
 	}
 
   return (
-    <ListItem hasOptions>
-			<span aria-hidden="true" defaultState>
-				Email
-			</span>
-			<div>
+    <ListItem hasOptions key="0" ref={ hoverRef }>
+		<span>Email</span>
+		
+		{isHovered && (
+			<PopOver>
 				<input onChange={ handleCopyEmail } className="hidden" />
-				<Button onClick={ copyToClipboard }>
+				
+				<Button onClick={ copyToClipboard } aria-live="polite">
 					{ buttonText }
 				</Button>
-				<span aria-hidden="true">|</span>
-				<a href={ 'mailto:' + emailAddress + '?subject=Hello Joe' }>
-					Use in App
+				
+				<a href={ 'mailto:${emailaddress}?subject=Hello Joe' }>
+					Open in Mail App
 				</a>
-			</div>
+			</PopOver>
+		)}
     </ListItem>
   )
 }
-
-export default EmailOptions

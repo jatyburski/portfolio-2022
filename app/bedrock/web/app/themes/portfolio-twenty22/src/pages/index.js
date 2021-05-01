@@ -34,13 +34,13 @@ const IndexPage = (props) => {
         <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
       </p>
 
-      <div>
+      {/* <div>
         { allWpPost.nodes.map(node=> {
           return (
             <h1>{node.title}</h1>
           )
         })}
-      </div>
+      </div> */}
     </Layout>
   )
 }

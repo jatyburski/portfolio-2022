@@ -6,7 +6,7 @@ module.exports = {
       xiketic: '#140F23',
       grey: '#8A8791',
       mustard: `#FFC857`,
-      white: `#FFFFFF`,
+      white: `#FBF9FF`,
     },
     fontFamily: {
       sans: ['Neogrotesk Pro', 'sans-serif'],
@@ -20,6 +20,9 @@ module.exports = {
       },
       lineHeight: {
         less: '.8',
+      },
+      transitionDelay: {
+        '0': '0ms',
       },
       transformOrigin: {
         'center-top': '50% 0',

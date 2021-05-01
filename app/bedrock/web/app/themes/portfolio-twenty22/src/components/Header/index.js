@@ -15,22 +15,20 @@ import {
 import ExternalLink from '../Global/ExternalLink'
 
 const query = graphql`{
-  allWp {
-    nodes {
-      themeOptions {
-        socialIcons {
-          socialmedia {
-            icons
-            link {
-              title
-              url
-            }
+  wp {
+    themeOptions {
+      settings {
+        socialmedia {
+          link {
+            title
+            url
           }
+          icons
         }
       }
-      generalSettings {
-        title
-      }
+    }
+    generalSettings {
+      title
     }
   }
   allWpMenu {
@@ -51,8 +49,8 @@ const query = graphql`{
 const Header = () => {
 
 const data = useStaticQuery(query)
-const title = data.allWp.nodes[0].generalSettings.title
-const icons = data.allWp.nodes[0].themeOptions.socialIcons.socialmedia
+const title = data.wp.generalSettings.title
+const icons = data.wp.themeOptions.settings.socialmedia
 const menu = data.allWpMenu.edges[0].node.menuItems.nodes
 
 	return (
@@ -63,9 +61,9 @@ const menu = data.allWpMenu.edges[0].node.menuItems.nodes
           <NavLogo to="/">{title}</NavLogo>
 
           <NavItemContainer>
-            {menu.map(item => {
+            {menu.map((item , index ) => {
               return (
-                <NavItem key={item.id}>
+                <NavItem key={index}>
                   <Link to={item.path}>{item.label}</Link>
                 </NavItem>
               )
