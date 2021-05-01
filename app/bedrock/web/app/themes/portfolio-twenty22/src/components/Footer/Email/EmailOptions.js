@@ -3,7 +3,7 @@ import { ListItem, PopOver, Button } from '../FooterElements'
 import copy from "copy-to-clipboard"; 
 import useHover from './popover';
 import { useThemeOptions } from '../../../hooks/useThemeOptions'
-import gsap from 'gsap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function EmailOptions () {
 	const { themeOptions } = useThemeOptions()
@@ -49,11 +49,11 @@ export default function EmailOptions () {
 				<input onChange={ handleCopyEmail } className="hidden" />
 				
 				<Button onClick={ copyToClipboard } aria-live="polite">
-					{ buttonText }
+					<FontAwesomeIcon icon={['fas', 'clone']} /> { buttonText }
 				</Button>
 				
 				<a href={ 'mailto:${emailaddress}?subject=Hello Joe' }>
-					Open in Mail App
+				<FontAwesomeIcon icon={['fas', 'envelope-open-text']} /> Open in Mail App
 				</a>
 			</PopOver>
 		)}

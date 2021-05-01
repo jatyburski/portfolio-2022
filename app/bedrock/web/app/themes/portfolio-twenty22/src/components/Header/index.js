@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, graphql, useStaticQuery } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import { 
   Container, 
   IconContainer, 
@@ -11,7 +10,6 @@ import {
   NavItemContainer, 
   NavLogo 
 } from './HeaderElements'
-
 import ExternalLink from '../Global/ExternalLink'
 
 const query = graphql`{

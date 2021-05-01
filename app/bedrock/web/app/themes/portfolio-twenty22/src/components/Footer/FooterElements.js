@@ -28,7 +28,7 @@ export const ListItem = styled.li`
     ${tw`relative overflow-visible`}
     
     /* > span {
-      ${tw`block cursor-pointer origin-center-top relative transform-style[preserve-3d] transition-all motion-safe:duration-300 motion-reduce:duration-75 ease-linear`}
+      ${tw`block cursor-pointer origin-center-top relative transform-style[preserve-3d] transition-all motion-safe:duration-200 motion-reduce:duration-75 ease-linear`}
     }
 
     &:hover {
@@ -42,14 +42,14 @@ export const ListItem = styled.li`
     }
 
     div {
-      ${tw`absolute block left-0 origin-center-top top-0 transform[translate3d(0, 105%, 0) rotateX(-90deg)] transition-all motion-safe:duration-300 motion-reduce:duration-75 ease-linear`}
+      ${tw`absolute block left-0 origin-center-top top-0 transform[translate3d(0, 105%, 0) rotateX(-90deg)] transition-all motion-safe:duration-200 motion-reduce:duration-75 ease-linear`}
   
       span {
         ${tw`mx-2`}
       }
   
       *:not(span) {
-        ${tw`transition-all ease-linear motion-safe:duration-300 motion-reduce:duration-75`}
+        ${tw`transition-all ease-linear motion-safe:duration-200 motion-reduce:duration-75`}
         
         &:hover {
           ${tw`text-mustard`}
@@ -72,7 +72,7 @@ export const ListLink = styled(ExternalLink)`
 
   span {
     ${tw`
-      block origin-center-top relative transform-style[preserve-3d] transition-all motion-safe:duration-300 motion-reduce:duration-75 ease-linear
+      block origin-center-top relative transform-style[preserve-3d] transition-all motion-safe:duration-200 motion-reduce:duration-75 ease-linear
       
       after:(
         absolute block content[attr(data-title)] left-0 origin-center-top top-0 text-mustard transform[translate3d(0, 105%, 0) rotateX(-90deg)]
