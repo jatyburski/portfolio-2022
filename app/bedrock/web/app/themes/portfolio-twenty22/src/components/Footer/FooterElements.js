@@ -15,6 +15,10 @@ export const Row = styled.section`
 // First Section
 export const Title = styled.h3`
   ${tw`w-5/12 -mb-12 font-black tracking-wide uppercase leading-less text-10xl font-condensed`}
+
+	span {
+		${tw`block`}
+	}
 `;
 
 export const List = styled.ul`
@@ -66,9 +70,12 @@ export const PopOver = styled.div`
 export const ListLink = styled(ExternalLink)`
   ${tw`perspective[600] perspective-origin[50%]`}
 
-  &:hover span {
-    ${tw`color[transparent] transform[translate3d(0, 0, -60px) rotateX(90deg)]`}
-  }
+  &:hover,
+	&:focus {
+		span {
+			${tw`color[transparent] transform[translate3d(0, 0, -60px) rotateX(90deg)]`}
+		}
+	}
 
   span {
     ${tw`

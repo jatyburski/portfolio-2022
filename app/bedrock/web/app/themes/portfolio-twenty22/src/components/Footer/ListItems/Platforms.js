@@ -2,7 +2,7 @@ import React from 'react'
 import { ListItem, ListLink } from '../FooterElements'
 import { useThemeOptions } from '../../../hooks/useThemeOptions'
 
-export default function Platforms() {
+export default function Platforms () {
 	const { themeOptions } = useThemeOptions()
 	const { settings } = themeOptions
 	const { socialmedia } = settings
@@ -26,4 +26,5 @@ export default function Platforms() {
 			})}
 		</>
 	)
+	
 }
