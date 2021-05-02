@@ -9,6 +9,7 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-styled-components`,
+		`gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -47,6 +48,37 @@ module.exports = {
           timeBuildSteps: true,
         },
       }
+    },
+		{
+			resolve: `gatsby-plugin-hotjar`,
+			options: {
+				includeInDevelopment: true,
+				id: 1867059,
+				sv: 6,
+			},
+		},
+		{
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "UA-27731403-1", // Google Analytics / GA
+          // "AW-CONVERSION_ID", // Google Ads / Adwords / AW
+          // "DC-FLOODIGHT_ID", // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
+        ],
+        // gtagConfig: {
+        //   optimize_id: "OPT_CONTAINER_ID",
+        //   anonymize_ip: true,
+        //   cookie_expires: 0,
+        // },
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: true,
+          // Setting this parameter is also optional
+          respectDNT: true,
+          // Avoids sending pageview hits from custom paths
+          // exclude: ["/preview/**", "/do-not-track/me/too/"],
+        },
+      },
     },
   ],
 }

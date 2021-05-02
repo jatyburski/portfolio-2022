@@ -3,18 +3,18 @@ import tw, {css} from 'twin.macro'
 import ExternalLink from '../Global/ExternalLink';
 
 // Global
-export const Container = styled.footer`
-  ${tw`w-full mt-60`}
+export const Container = tw.footer`
+  w-full mt-60
 `;
 
-export const Row = styled.section`
-  ${tw`flex justify-end`}
+export const Row = tw.section`
+  flex justify-end
 `;
 
 
 // First Section
 export const Title = styled.h3`
-  ${tw`w-5/12 -mb-12 font-black tracking-wide uppercase leading-less text-10xl font-condensed`}
+  ${tw`-mb-12 font-black tracking-wide uppercase xl:w-5/12 lg:w-7/12 leading-less text-10xl font-condensed`}
 
 	span {
 		${tw`block`}
@@ -22,7 +22,7 @@ export const Title = styled.h3`
 `;
 
 export const List = styled.ul`
-  ${tw`flex flex-col items-start justify-end w-4/12`}
+  ${tw`flex flex-col items-start justify-end xl:w-4/12 lg:w-3/12`}
 `;
 
 export const ListItem = styled.li`
@@ -63,8 +63,8 @@ export const ListItem = styled.li`
   `}
 `;
 
-export const PopOver = styled.div`
-  ${tw`absolute top-0 z-40 transform[translateY(-90%)] bg-white h-96 rounded-md text-left text-xiketic p-14 w-96`}
+export const PopOver = tw.div`
+  absolute top-0 z-40 transform[translateY(-90%)] bg-white h-96 rounded-md text-left text-xiketic p-14 w-96
 `;
 
 export const ListLink = styled(ExternalLink)`
@@ -88,22 +88,20 @@ export const ListLink = styled(ExternalLink)`
   }
 `;
 
-export const Button = styled.button`
-  ${tw`font-bold focus:outline-none`}
+export const Button = tw.button`
+  font-bold focus:outline-none
 `;
 
 
 // Second Section
-export const Colophon = styled.div`
-  ${tw`
-    leading-relaxed pb-16 pt-24 relative text-grey text-xs w-4/12
-    
-    before:(
-      absolute border-grey border-solid border-t empty-content h-px left[-16.666vw] top[calc(50% + 10px)] width[8.333vw]
-    )
-  `}
+export const Colophon = tw.div`
+	leading-relaxed pb-16 pt-24 relative text-grey text-xs xl:w-4/12 lg:w-5/12
+	
+	before:(
+		absolute border-grey border-solid border-t empty-content h-px left[-16.666vw] top[calc(50% + 10px)] width[8.333vw]
+	)
 `;
 
-export const Widget = styled.div`
-  ${tw`flex items-start justify-end leading-normal margin-right[8.333vw] pt-24 text-grey text-xs w-2/12`}
+export const Widget = tw.div`
+  flex items-start justify-end leading-normal margin-right[8.333vw] pt-24 text-grey text-xs w-2/12
 `;

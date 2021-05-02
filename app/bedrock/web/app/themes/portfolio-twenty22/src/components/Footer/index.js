@@ -29,8 +29,8 @@ export default function Footer () {
 			<Row>
 				<Colophon>
 					<p>
-						Designed &amp; Developed with <FontAwesomeIcon icon={[ 'fas', 'heart' ]} className="mx-1" />
-						<span className="sr-only">love</span> and <FontAwesomeIcon icon={[ 'fas', 'music' ]} className="mx-1" />
+						Designed &amp; Developed with <FontAwesomeIcon icon={ [ 'fas', 'heart' ] } className="mx-1" />
+						<span className="sr-only">love</span> and <FontAwesomeIcon icon={ [ 'fas', 'music' ] } className="mx-1" />
 						<span className="sr-only">music</span> in Baltimore.
 					</p>
 					
@@ -40,8 +40,8 @@ export default function Footer () {
 				</Colophon>
 				
 				<Widget>
-					<Link to="/" className="hover:text-white">
-						This Portfolio's Tech Stack
+					<Link to="/technology-that-built-this-site" className="hover:text-white">
+						Technology That Built This Site
 					</Link>
 				</Widget>
 			</Row>

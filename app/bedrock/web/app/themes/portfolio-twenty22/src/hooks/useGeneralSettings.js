@@ -1,16 +1,16 @@
-// import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 
-// const query = graphql`
-// 	query MyQuery {
-// 		wp {
-// 			generalSettings {
-// 				title
-// 			}
-// 		}
-// 	}
-// `
+const query = graphql`
+	query useGeneralSettings {
+		wp {
+			generalSettings {
+				title
+			}
+		}
+	}
+`
 
-// export const useGeneralSettings = () => {
-// 	const { wp } = useStaticQuery(query)
-// 	return wp
-// }
+export const useGeneralSettings = () => {
+	const data = useStaticQuery(query)
+	return data.wp.generalSettings.title
+}

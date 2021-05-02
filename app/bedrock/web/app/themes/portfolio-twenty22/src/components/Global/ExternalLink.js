@@ -5,7 +5,7 @@ const ExternalLink = ({ to, className, idName, title, children }) => {
 		<a 
       href={to} 
       target="_blank" 
-      rel="noreferrer"
+      rel="noreferrer noopenner"
       className={className}
       id={idName}
       title={title}

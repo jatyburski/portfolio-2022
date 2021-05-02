@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from 'gatsby'
 
 const query = graphql`
-	query MyQuery {
+	query useThemeOptions {
 		wp {
 			themeOptions {
 				settings {

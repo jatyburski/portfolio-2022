@@ -4,9 +4,11 @@ module.exports = {
   theme: {
     colors: {
       xiketic: '#140F23',
-      grey: '#8A8791',
+      grey: '#A4A9AD',
       mustard: `#FFC857`,
       white: `#FBF9FF`,
+			imperialRed: `#EF233C`,
+			lightGreen: `#7DDF64`,
     },
     fontFamily: {
       sans: ['Neogrotesk Pro', 'sans-serif'],

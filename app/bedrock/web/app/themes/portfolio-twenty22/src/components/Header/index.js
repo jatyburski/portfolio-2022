@@ -1,75 +1,50 @@
 import React from 'react'
-import { Link, graphql, useStaticQuery } from "gatsby"
+// import { Link } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
   Container, 
   IconContainer, 
   IconItem, 
   Nav, 
-  NavItem, 
-  NavItemContainer, 
-  NavLogo 
+  // NavItem, 
+  // NavItemContainer, 
+  // NavLogo 
 } from './HeaderElements'
 import ExternalLink from '../Global/ExternalLink'
+// import { useGeneralSettings } from '../../hooks/useGeneralSettings'
+// import { useNavigation } from '../../hooks/useNavigation'
+import { useThemeOptions } from '../../hooks/useThemeOptions'
 
-const query = graphql`{
-  wp {
-    themeOptions {
-      settings {
-        socialmedia {
-          link {
-            title
-            url
-          }
-          icons
-        }
-      }
-    }
-    generalSettings {
-      title
-    }
-  }
-  allWpMenu {
-    edges {
-      node {
-        menuItems {
-          nodes {
-            label
-            path
-            id
-          }
-        }
-      }
-    }
-  }
-}`
+export default function Header () {
+	// const { title } = useGeneralSettings()
+	
+	// const { navigation } = useNavigation()
+	// const { nodes } = navigation
+	
+	const { themeOptions } = useThemeOptions()
+	const { settings } = themeOptions
+	const { socialmedia } = settings
 
-const Header = () => {
-
-const data = useStaticQuery(query)
-const title = data.wp.generalSettings.title
-const icons = data.wp.themeOptions.settings.socialmedia
-const menu = data.allWpMenu.edges[0].node.menuItems.nodes
 
 	return (
 		<>
 			<Container>
 				<Nav>
 
-          <NavLogo to="/">{title}</NavLogo>
-
+          {/* <NavLogo to="/">{title}</NavLogo> */}
+{/* 
           <NavItemContainer>
-            {menu.map((item , index ) => {
+            {nodes.map((item , index ) => {
               return (
                 <NavItem key={index}>
                   <Link to={item.path}>{item.label}</Link>
                 </NavItem>
               )
             })}
-          </NavItemContainer>
+          </NavItemContainer> */}
 
           <IconContainer>
-            {icons.map((item, index) => {
+            {socialmedia.map((item, index) => {
               return (
                 <IconItem key={index}>
               
@@ -88,5 +63,3 @@ const menu = data.allWpMenu.edges[0].node.menuItems.nodes
 		</>
 	)
 }
-
-export default Header;

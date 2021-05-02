@@ -6,11 +6,10 @@ import Layout from "../components/Layout"
 import SEO from "../components/Global/SEO"
 
 const IndexPage = (props) => {
-  console.log(props)
 
-  const {
-    data: { allWpPost },
-  } = props
+  // const {
+  //   data: { allWpPost },
+  // } = props
 
   return (
     <Layout>
