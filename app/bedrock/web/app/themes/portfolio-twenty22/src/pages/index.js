@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/Layout"
-import SEO from "../components/Global/SEO"
+import SearchOptimization from "../components/Global/SEO"
 
 const IndexPage = (props) => {
 
@@ -13,7 +13,7 @@ const IndexPage = (props) => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SearchOptimization title="Home" />
 
       <h1>Hi people</h1>
       <p>Welcome to your new Gatsby site.</p>

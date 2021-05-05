@@ -3,6 +3,7 @@ module.exports = {
     title: `Joseph Tyburski — Baltimore Senior Web Designer`,
     description: `Joseph Tyburski, an award-winning senior web designer, helps creative leaders create impactful websites that engage with audiences. Hire him to join your team!`,
     author: `Joseph Tyburski`,
+		siteUrl: 'https://tyburskidesigns.com/'
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -78,6 +79,12 @@ module.exports = {
           // Avoids sending pageview hits from custom paths
           // exclude: ["/preview/**", "/do-not-track/me/too/"],
         },
+      },
+    },
+		{
+      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+      options: {
+        devMode: true,
       },
     },
   ],

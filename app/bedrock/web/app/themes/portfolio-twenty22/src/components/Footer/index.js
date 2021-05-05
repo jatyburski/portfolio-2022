@@ -5,10 +5,13 @@ import {
 	Title,
 	List,
 	Colophon,
-	Widget
+	Widget,
+	WidgetLink
 } from './FooterElements'
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from "@fortawesome/pro-solid-svg-icons/faHeart"
+import { faMusic } from "@fortawesome/pro-solid-svg-icons/faMusic"
 import ListItems from './ListItems/ListItems'
 
 export default function Footer () {
@@ -29,8 +32,8 @@ export default function Footer () {
 			<Row>
 				<Colophon>
 					<p>
-						Designed &amp; Developed with <FontAwesomeIcon icon={ [ 'fas', 'heart' ] } className="mx-1" />
-						<span className="sr-only">love</span> and <FontAwesomeIcon icon={ [ 'fas', 'music' ] } className="mx-1" />
+						Designed &amp; Developed with <FontAwesomeIcon icon={ faHeart } className="mx-1" />
+						<span className="sr-only">love</span> and <FontAwesomeIcon icon={ faMusic } className="mx-1" />
 						<span className="sr-only">music</span> in Baltimore.
 					</p>
 					
@@ -40,9 +43,9 @@ export default function Footer () {
 				</Colophon>
 				
 				<Widget>
-					<Link to="/technology-that-built-this-site" className="hover:text-white">
-						Technology That Built This Site
-					</Link>
+					<WidgetLink to="/technology-that-built-this-site">
+						<span>Technology That Built This Site</span>
+					</WidgetLink>
 				</Widget>
 			</Row>
 		</Container>

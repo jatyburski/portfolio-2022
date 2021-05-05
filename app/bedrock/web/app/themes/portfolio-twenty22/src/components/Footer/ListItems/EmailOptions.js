@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { ListItem, PopOver, Button } from '../FooterElements'
+import { ListItem, PopOver, PopOverItem, Button } from '../FooterElements'
 import copy from "copy-to-clipboard"; 
-import useHover from '../../../hooks/useHover';
-import { useThemeOptions } from '../../../hooks/useThemeOptions'
+// import useHover from '../../../hooks/useHover';
+import { useThemeOptions } from '../../../hooks/data/useThemeOptions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faClone } from "@fortawesome/pro-solid-svg-icons/faClone"
+import { faEnvelopeOpenText } from "@fortawesome/pro-solid-svg-icons/faEnvelopeOpenText"
 // import gsap, { TweenMax, Linear } from 'gsap'
 
 export default function EmailOptions () {
@@ -12,7 +14,16 @@ export default function EmailOptions () {
 	const { emailaddress } = settings
 
 	// Popover
-	const [hoverRef, isHovered] = useHover();
+	const [hoverRef, isHovered] = useState(false);
+	// const handleHover = () => isHovered(!hoverRef)
+
+	const onMouseEnter = () => {
+		isHovered(true)
+	}
+
+	const onMouseLeave = () => {
+		isHovered(false)
+	}
 
 	// const tl = gsap.timeline()
 
@@ -50,20 +61,35 @@ export default function EmailOptions () {
 	}
 
   return (
-    <ListItem ref={ hoverRef } key="0" hasOptions>
+    <ListItem 
+			key="0" 
+			hasOptions 
+			onMouseEnter={ onMouseEnter } 
+			onMouseLeave={ onMouseLeave }
+		>
 			<span>Email</span>
+			<input onChange={ handleCopyEmail } className="hidden" />
 			
 			{isHovered && (
-				<PopOver role="dialog">
-					<input onChange={ handleCopyEmail } className="hidden" />
+				<PopOver 
+					role="dialog" 
+					className={ hoverRef ? 'flex' : 'hidden' }
+				>	
+					<PopOverItem>
+						<Button onClick={ copyToClipboard } aria-live="polite">
+							<FontAwesomeIcon icon={ faClone } /> { buttonText }
+						</Button>
+					</PopOverItem>
 					
-					<Button onClick={ copyToClipboard } aria-live="polite">
-						<FontAwesomeIcon icon={['fas', 'clone']} /> { buttonText }
-					</Button>
-					
-					<a href={ 'mailto:' + emailaddress + '?subject=Hello Joe' }>
-						<FontAwesomeIcon icon={ ['fas', 'envelope-open-text'] } /> Open in Mail App
-					</a>
+					<PopOverItem>
+						<a 
+							className="block p-8"
+							href={ 'mailto:' + emailaddress + '?subject=Hello Joe' } 
+							onClick={ () => isHovered(false) }
+						>
+							<FontAwesomeIcon icon={ faEnvelopeOpenText } /> Open in Mail App
+						</a>
+					</PopOverItem>
 				</PopOver>
 			)}
     </ListItem>

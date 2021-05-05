@@ -16,19 +16,38 @@ Requires PHP: 7.4.1
 
 @layer base {
 	@font-face {
+		font-display: swap;
 		font-family: Neogrotesk Pro;
 		font-weight: 400;
 		src: url(./src/fonts/NeogroteskPro-Regular.woff) format("woff");
 	}
+	
 	@font-face {
+		font-display: swap;
 		font-family: Neogrotesk Pro;
 		font-weight: 700;
 		src: url(./src/fonts/NeogroteskPro-Bold.woff) format("woff");
 	}
+	
   ::selection {
     @apply bg-mustard text-xiketic;
   }
+	
   body {
 		@apply antialiased text-white bg-xiketic;
+	}
+
+	@media (any-pointer: fine) {
+		.cursor {
+			@apply fixed top-0 left-0 z-50 block pointer-events-none;
+		}
+	
+		.cursor__inner {
+			@apply fill-current stroke-current stroke-0 text-mustard opacity-70;
+		}
+	
+		.no-js .cursor {
+			@apply hidden;
+		}
 	}
 }

@@ -19,6 +19,6 @@ const query = graphql`
 `
 
 export const useNavigation = () => {
-	const data = useStaticQuery(query)
-	return data.allWpMenu.edges[0].node.menuItems
+	const { allWpMenu } = useStaticQuery(query)
+	return allWpMenu.edges[0].node.menuItems
 }

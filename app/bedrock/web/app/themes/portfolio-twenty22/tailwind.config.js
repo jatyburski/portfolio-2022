@@ -7,8 +7,8 @@ module.exports = {
       grey: '#A4A9AD',
       mustard: `#FFC857`,
       white: `#FBF9FF`,
-			imperialRed: `#EF233C`,
-			lightGreen: `#7DDF64`,
+			'imperial-red': `#EF233C`,
+			'light-green': `#7DDF64`,
     },
     fontFamily: {
       sans: ['Neogrotesk Pro', 'sans-serif'],
@@ -17,6 +17,7 @@ module.exports = {
     extend: {
       fontSize: {
         xs: '.7rem',
+				base: '1.25rem',
         '6xl': '3.4rem',
         '10xl': '23.4375rem',
       },

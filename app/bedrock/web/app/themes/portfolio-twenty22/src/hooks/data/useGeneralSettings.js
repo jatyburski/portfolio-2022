@@ -5,12 +5,13 @@ const query = graphql`
 		wp {
 			generalSettings {
 				title
+				description
 			}
 		}
 	}
 `
 
 export const useGeneralSettings = () => {
-	const data = useStaticQuery(query)
-	return data.wp.generalSettings.title
+	const { wp } = useStaticQuery(query)
+	return wp.generalSettings
 }

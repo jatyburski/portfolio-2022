@@ -1,6 +1,6 @@
 import React from 'react'
 import { ListItem, ListLink } from '../FooterElements'
-import { useThemeOptions } from '../../../hooks/useThemeOptions'
+import { useThemeOptions } from '../../../hooks/data/useThemeOptions'
 
 export default function Platforms () {
 	const { themeOptions } = useThemeOptions()
